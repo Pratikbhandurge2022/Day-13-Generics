@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace generics
+namespace FindMaximumNumberProject
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Find Maximum Number");
+
+            int output = MaximumNumberCheck.MaximumIntegerNumber(20, 40, 80);
         }
     }
 }
