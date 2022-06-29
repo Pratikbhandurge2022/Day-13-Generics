@@ -6,38 +6,42 @@ using System.Threading.Tasks;
 
 namespace FindMaximumNumberProject
 {
-    internal class MaximumNumberCheck
+    public class GenericMaximum<T> where T : IComparable
     {
 
         ///<summary>
-        ///this is method is created for maximum String number
+        ///this is method is created for Maximum Method to take more than 3 parameters and used Sorting
         ///</summary>
-        public static string MaximumStringNumber(string firstString, string secondString, string thirdString)
+
+
+        public T[] value;
+        public GenericMaximum(T[] value)
         {
-            if (firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString) > 0 ||
-                firstString.CompareTo(secondString) >= 0 && firstString.CompareTo(thirdString) > 0 ||
-                firstString.CompareTo(secondString) > 0 && firstString.CompareTo(thirdString) >= 0)
-            {
-                return firstString;
-            }
-            if (secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) > 0 ||
-                secondString.CompareTo(firstString) >= 0 && secondString.CompareTo(thirdString) > 0 ||
-                secondString.CompareTo(firstString) > 0 && secondString.CompareTo(thirdString) >= 0)
-            {
-                return secondString;
-
-            }
-            if (thirdString.CompareTo(firstString) > 0 && thirdString.CompareTo(secondString) > 0 ||
-                thirdString.CompareTo(firstString) >= 0 && thirdString.CompareTo(secondString) > 0 ||
-                thirdString.CompareTo(firstString) > 0 && thirdString.CompareTo(secondString) >= 0)
-            {
-                return thirdString;
-
-            }
-            throw new NotImplementedException("firstNumber, secondNumber, thirdNumber are same");
+            this.value = value;
+        }
+        public T[] Sort(T[] values)
+        {
+            Array.Sort(values);
+            return values;
+        }
+        public T MaxValue(params T[] values)
+        {
+            var sorted_values = Sort(values);
+            return sorted_values[^1];
 
         }
+        public T MaxMethod()
+        {
+            var max = MaxValue(this.value);
+            return max;
 
+        }
+        public void PrintMaxValues()
+        {
+            var max = MaxValue(this.value);
+            Console.WriteLine("Maximum value is " + max);
+        }
 
     }
+
 }
